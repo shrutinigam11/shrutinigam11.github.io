@@ -21,6 +21,7 @@
         #sidebar.collapsed {
             width: 0;
             padding: 0;
+            opacity: 0; /* Hide the sidebar visually when collapsed */
         }
         #sidebar h2 {
             margin: 0;
@@ -197,6 +198,13 @@
         // Toggle sidebar functionality
         toggleButton.addEventListener('click', function() {
             sidebar.classList.toggle('collapsed');
+
+            // Adjust the content margin if sidebar is collapsed
+            if (sidebar.classList.contains('collapsed')) {
+                document.getElementById('content').style.marginLeft = '0';
+            } else {
+                document.getElementById('content').style.marginLeft = '250px'; // Reset margin to full width of sidebar
+            }
         });
     });
 </script>
