@@ -18,6 +18,8 @@
             color: #333;
             background-color: #f4f4f4;
             display: flex; /* Flex layout for sidebar and content */
+            min-height: 100vh; /* Minimum height to allow footer at the bottom */
+            flex-direction: column; /* Vertical layout */
         }
 
         /* Styling for the sidebar */
@@ -86,10 +88,9 @@
             padding: 20px;
             background-color: #007BFF;
             color: white;
-            position: relative;
-            bottom: 0;
             width: 100%;
-            margin-top: 60px;
+            position: relative; /* Relative positioning */
+            margin-top: auto; /* Push footer to the bottom */
         }
 
         /* Media queries for responsiveness */
