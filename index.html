@@ -49,8 +49,9 @@
             border-radius: 5px;
         }
 
-        /* Styling for sections */
-        section {
+        /* Styling for tab content */
+        .tab-content {
+            display: none; /* Initially hide all sections */
             max-width: 1000px;
             margin: 60px auto;
             padding: 30px;
@@ -59,7 +60,11 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        section h2 {
+        .tab-content.active {
+            display: block; /* Show only the active section */
+        }
+
+        .tab-content h2 {
             border-bottom: 2px solid #007BFF;
             padding-bottom: 10px;
             margin-bottom: 20px;
@@ -67,7 +72,7 @@
             color: #007BFF;
         }
 
-        section p {
+        .tab-content p {
             font-size: 18px;
             line-height: 1.8;
         }
@@ -91,16 +96,16 @@
                 font-size: 14px;
             }
 
-            section {
+            .tab-content {
                 padding: 20px;
                 margin: 40px auto;
             }
 
-            section h2 {
+            .tab-content h2 {
                 font-size: 24px;
             }
 
-            section p {
+            .tab-content p {
                 font-size: 16px;
             }
         }
@@ -110,90 +115,90 @@
 
 <header>
     <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#publications">Publications</a>
-        <a href="#blogs">Blogs</a>
-        <a href="#cv">CV</a>
-        <a href="#resume">Resume</a>
-        <a href="#education">Education</a>
-        <a href="#work">Work Experience</a>
-        <a href="#research">Research Experience</a>
-        <a href="#contact">Contact</a>
-        <a href="#honors">Honors</a>
-        <a href="#other-experience">Other Experience</a>
-        <a href="#courses">Courses</a>
-        <a href="#other">Other</a>
+        <a href="#" class="tab-link" data-tab="about">About</a>
+        <a href="#" class="tab-link" data-tab="projects">Projects</a>
+        <a href="#" class="tab-link" data-tab="publications">Publications</a>
+        <a href="#" class="tab-link" data-tab="blogs">Blogs</a>
+        <a href="#" class="tab-link" data-tab="cv">CV</a>
+        <a href="#" class="tab-link" data-tab="resume">Resume</a>
+        <a href="#" class="tab-link" data-tab="education">Education</a>
+        <a href="#" class="tab-link" data-tab="work">Work Experience</a>
+        <a href="#" class="tab-link" data-tab="research">Research Experience</a>
+        <a href="#" class="tab-link" data-tab="contact">Contact</a>
+        <a href="#" class="tab-link" data-tab="honors">Honors</a>
+        <a href="#" class="tab-link" data-tab="other-experience">Other Experience</a>
+        <a href="#" class="tab-link" data-tab="courses">Courses</a>
+        <a href="#" class="tab-link" data-tab="other">Other</a>
     </nav>
 </header>
 
 <main>
-    <section id="about">
+    <section id="about" class="tab-content active">
         <h2>About</h2>
         <p>This is where you provide information about yourself, including your background, interests, and goals.</p>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="tab-content">
         <h2>Projects</h2>
         <p>Details of the projects you have worked on. You can mention the technology stack, your role, and key contributions.</p>
     </section>
 
-    <section id="publications">
+    <section id="publications" class="tab-content">
         <h2>Publications</h2>
         <p>A list of your publications. You can include links, descriptions, and any relevant information.</p>
     </section>
 
-    <section id="blogs">
+    <section id="blogs" class="tab-content">
         <h2>Blogs</h2>
         <p>Highlight your blog posts and other articles. Describe topics you’ve written about and where they’re published.</p>
     </section>
 
-    <section id="cv">
+    <section id="cv" class="tab-content">
         <h2>CV</h2>
         <p>Your detailed Curriculum Vitae can go here. You can also include a downloadable link.</p>
     </section>
 
-    <section id="resume">
+    <section id="resume" class="tab-content">
         <h2>Resume</h2>
         <p>Provide a summary of your professional experience, skills, and key qualifications.</p>
     </section>
 
-    <section id="education">
+    <section id="education" class="tab-content">
         <h2>Education</h2>
         <p>List your educational background, including institutions, degrees earned, and relevant coursework.</p>
     </section>
 
-    <section id="work">
+    <section id="work" class="tab-content">
         <h2>Work Experience</h2>
         <p>Describe your professional work history, key roles, and major accomplishments.</p>
     </section>
 
-    <section id="research">
+    <section id="research" class="tab-content">
         <h2>Research Experience</h2>
         <p>Detail your research projects, collaborations, and contributions to the academic field.</p>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="tab-content">
         <h2>Contact</h2>
         <p>Provide your contact details or a form for visitors to reach you.</p>
     </section>
 
-    <section id="honors">
+    <section id="honors" class="tab-content">
         <h2>Honors</h2>
         <p>List honors, awards, and other forms of recognition you’ve received.</p>
     </section>
 
-    <section id="other-experience">
+    <section id="other-experience" class="tab-content">
         <h2>Other Experience</h2>
         <p>Include additional experiences or volunteer work relevant to your profile.</p>
     </section>
 
-    <section id="courses">
+    <section id="courses" class="tab-content">
         <h2>Courses</h2>
         <p>List relevant courses you have completed that enhance your skills and qualifications.</p>
     </section>
 
-    <section id="other">
+    <section id="other" class="tab-content">
         <h2>Other</h2>
         <p>Any additional information that does not fit into other categories.</p>
     </section>
@@ -202,6 +207,33 @@
 <footer>
     <p>&copy; 2024 Your Name - All Rights Reserved</p>
 </footer>
+
+<script>
+    // JavaScript to handle tab functionality
+    document.addEventListener("DOMContentLoaded", function() {
+        const tabLinks = document.querySelectorAll('.tab-link');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Remove active class from all tab contents
+                tabContents.forEach(content => content.classList.remove('active'));
+
+                // Remove active class from all tab links
+                tabLinks.forEach(link => link.classList.remove('active'));
+
+                // Add active class to the clicked link
+                this.classList.add('active');
+
+                // Show the associated tab content
+                const activeTab = document.getElementById(this.dataset.tab);
+                activeTab.classList.add('active');
+            });
+        });
+    });
+</script>
 
 </body>
 </html>
