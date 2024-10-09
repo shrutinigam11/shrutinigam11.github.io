@@ -85,12 +85,13 @@
         /* Footer styling */
         footer {
             text-align: center;
-            padding: 20px;
+            padding: 10px; /* Reduced padding */
             background-color: #007BFF;
             color: white;
             width: 100%;
             position: relative; /* Relative positioning */
             margin-top: auto; /* Push footer to the bottom */
+            font-size: 14px; /* Adjust font size */
         }
 
         /* Media queries for responsiveness */
@@ -222,19 +223,17 @@
         tabLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
+                const target = this.getAttribute('data-tab');
 
-                // Remove active class from all tab contents
-                tabContents.forEach(content => content.classList.remove('active'));
-
-                // Remove active class from all tab links
+                // Remove active class from all links
                 tabLinks.forEach(link => link.classList.remove('active'));
+                // Hide all tab contents
+                tabContents.forEach(content => content.classList.remove('active'));
 
                 // Add active class to the clicked link
                 this.classList.add('active');
-
-                // Show the associated tab content
-                const activeTab = document.getElementById(this.dataset.tab);
-                activeTab.classList.add('active');
+                // Show the corresponding content
+                document.getElementById(target).classList.add('active');
             });
         });
     });
