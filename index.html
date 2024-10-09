@@ -3,181 +3,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Portfolio</title>
+    <title>Personal Webpage</title>
     <style>
+        /* General page styling */
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            display: flex;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            display: flex; /* Flex layout for sidebar and content */
+            min-height: 100vh; /* Minimum height to allow footer at the bottom */
+            flex-direction: column; /* Vertical layout */
         }
-        #sidebar {
-            width: 250px;
-            background-color: #0056b3;
-            color: white;
+
+        /* Styling for the sidebar */
+        .sidebar {
+            width: 250px; /* Width of the sidebar */
+            background-color: #007BFF;
             padding: 20px;
-            transition: width 0.3s;
-            overflow: hidden;
+            height: 100vh; /* Full height */
+            position: fixed; /* Fixed positioning */
+            overflow-y: auto; /* Scroll if content exceeds height */
         }
-        #sidebar.collapsed {
-            width: 0;
-            padding: 0;
-            opacity: 0; /* Hide the sidebar visually when collapsed */
-        }
-        #sidebar h2 {
-            margin: 0;
-        }
-        #tab-links {
-            list-style: none;
-            padding: 0;
-        }
-        #tab-links li {
-            margin: 15px 0;
-        }
-        #tab-links a {
+
+        .sidebar a {
             color: white;
             text-decoration: none;
             display: block;
-            padding: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            font-weight: bold;
             border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s ease;
         }
-        #tab-links a:hover {
-            background-color: #004494;
+
+        .sidebar a:hover, .sidebar a.active {
+            background-color: #0056b3;
         }
-        #content {
-            flex: 1;
+
+        /* Styling for the main content area */
+        main {
+            margin-left: 270px; /* Offset for the sidebar */
             padding: 20px;
-            background-color: #f9f9f9;
-            position: relative;
+            flex: 1; /* Allow main to fill available space */
         }
+
+        /* Styling for tab content */
         .tab-content {
-            display: none;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
-            margin-top: 20px;
-            background: white;
+            display: none; /* Initially hide all sections */
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .tab-content.active {
-            display: block;
+            display: block; /* Show only the active section */
         }
-        #footer {
-            background-color: #0056b3;
-            color: white;
+
+        .tab-content h2 {
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #007BFF;
+        }
+
+        .tab-content p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* Footer styling */
+        footer {
             text-align: center;
-            padding: 10px;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
-        }
-        #toggle-button {
-            background-color: #0056b3;
+            padding: 10px; /* Reduced padding */
+            background-color: #007BFF;
             color: white;
-            border: none;
-            cursor: pointer;
-            padding: 10px;
-            margin-bottom: 10px;
-            transition: background-color 0.3s;
+            width: 100%;
+            position: relative; /* Relative positioning */
+            margin-top: auto; /* Push footer to the bottom */
+            font-size: 14px; /* Adjust font size */
         }
-        #toggle-button:hover {
-            background-color: #004494;
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px; /* Adjust sidebar width */
+            }
+
+            main {
+                margin-left: 220px; /* Adjust margin for main content */
+            }
+
+            .tab-content {
+                padding: 20px;
+                margin: 40px auto;
+            }
+
+            .tab-content h2 {
+                font-size: 24px;
+            }
+
+            .tab-content p {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div id="sidebar">
-    <button id="toggle-button">Toggle Menu</button>
-    <h2>Your Name</h2>
-    <ul id="tab-links">
-        <li><a href="#" data-tab="about">About</a></li>
-        <li><a href="#" data-tab="projects">Projects</a></li>
-        <li><a href="#" data-tab="publications">Publications</a></li>
-        <li><a href="#" data-tab="blogs">Blogs</a></li>
-        <li><a href="#" data-tab="cv">CV</a></li>
-        <li><a href="#" data-tab="resume">Resume</a></li>
-        <li><a href="#" data-tab="education">Education</a></li>
-        <li><a href="#" data-tab="work-experience">Work Experience</a></li>
-        <li><a href="#" data-tab="research-experience">Research Experience</a></li>
-        <li><a href="#" data-tab="contact">Contact</a></li>
-        <li><a href="#" data-tab="honors">Honors</a></li>
-        <li><a href="#" data-tab="other-experience">Other Experience</a></li>
-        <li><a href="#" data-tab="courses">Courses</a></li>
-        <li><a href="#" data-tab="other">Other</a></li>
-    </ul>
+<div class="sidebar">
+    <a href="#" class="tab-link active" data-tab="about">About</a>
+    <a href="#" class="tab-link" data-tab="projects">Projects</a>
+    <a href="#" class="tab-link" data-tab="publications">Publications</a>
+    <a href="#" class="tab-link" data-tab="blogs">Blogs</a>
+    <a href="#" class="tab-link" data-tab="cv">CV</a>
+    <a href="#" class="tab-link" data-tab="resume">Resume</a>
+    <a href="#" class="tab-link" data-tab="education">Education</a>
+    <a href="#" class="tab-link" data-tab="work">Work Experience</a>
+    <a href="#" class="tab-link" data-tab="research">Research Experience</a>
+    <a href="#" class="tab-link" data-tab="contact">Contact</a>
+    <a href="#" class="tab-link" data-tab="honors">Honors</a>
+    <a href="#" class="tab-link" data-tab="other-experience">Other Experience</a>
+    <a href="#" class="tab-link" data-tab="courses">Courses</a>
+    <a href="#" class="tab-link" data-tab="other">Other</a>
 </div>
 
-<div id="content">
-    <div id="about" class="tab-content active">
+<main>
+    <section id="about" class="tab-content active">
         <h2>About</h2>
         <p>Welcome! This is where you provide information about yourself, including your background, interests, and goals.</p>
-    </div>
-    <div id="projects" class="tab-content">
-        <h2>Projects</h2>
-        <p>This section can include details about your projects and achievements.</p>
-    </div>
-    <div id="publications" class="tab-content">
-        <h2>Publications</h2>
-        <p>List your publications and research papers here.</p>
-    </div>
-    <div id="blogs" class="tab-content">
-        <h2>Blogs</h2>
-        <p>Share your blog posts or articles in this section.</p>
-    </div>
-    <div id="cv" class="tab-content">
-        <h2>CV</h2>
-        <p>Details about your CV can be placed here.</p>
-    </div>
-    <div id="resume" class="tab-content">
-        <h2>Resume</h2>
-        <p>Provide your resume details here.</p>
-    </div>
-    <div id="education" class="tab-content">
-        <h2>Education</h2>
-        <p>List your educational background in this section.</p>
-    </div>
-    <div id="work-experience" class="tab-content">
-        <h2>Work Experience</h2>
-        <p>Describe your work experience here.</p>
-    </div>
-    <div id="research-experience" class="tab-content">
-        <h2>Research Experience</h2>
-        <p>Share your research experience in this section.</p>
-    </div>
-    <div id="contact" class="tab-content">
-        <h2>Contact</h2>
-        <p>Include your contact information here.</p>
-    </div>
-    <div id="honors" class="tab-content">
-        <h2>Honors</h2>
-        <p>Mention any honors or awards you've received.</p>
-    </div>
-    <div id="other-experience" class="tab-content">
-        <h2>Other Experience</h2>
-        <p>Detail any other relevant experience you have.</p>
-    </div>
-    <div id="courses" class="tab-content">
-        <h2>Courses</h2>
-        <p>List any relevant courses you have taken.</p>
-    </div>
-    <div id="other" class="tab-content">
-        <h2>Other</h2>
-        <p>Any additional information can go here.</p>
-    </div>
-</div>
+    </section>
 
-<div id="footer">
-    © 2024 Your Name - All Rights Reserved
-</div>
+    <section id="projects" class="tab-content">
+        <h2>Projects</h2>
+        <p>Welcome! Details of the projects you have worked on. You can mention the technology stack, your role, and key contributions.</p>
+    </section>
+
+    <section id="publications" class="tab-content">
+        <h2>Publications</h2>
+        <p>Welcome! A list of your publications. You can include links, descriptions, and any relevant information.</p>
+    </section>
+
+    <section id="blogs" class="tab-content">
+        <h2>Blogs</h2>
+        <p>Welcome! Highlight your blog posts and other articles. Describe topics you’ve written about and where they’re published.</p>
+    </section>
+
+    <section id="cv" class="tab-content">
+        <h2>CV</h2>
+        <p>Welcome! Your detailed Curriculum Vitae can go here. You can also include a downloadable link.</p>
+    </section>
+
+    <section id="resume" class="tab-content">
+        <h2>Resume</h2>
+        <p>Welcome! Provide a summary of your professional experience, skills, and key qualifications.</p>
+    </section>
+
+    <section id="education" class="tab-content">
+        <h2>Education</h2>
+        <p>Welcome! List your educational background, including institutions, degrees earned, and relevant coursework.</p>
+    </section>
+
+    <section id="work" class="tab-content">
+        <h2>Work Experience</h2>
+        <p>Welcome! Describe your professional work history, key roles, and major accomplishments.</p>
+    </section>
+
+    <section id="research" class="tab-content">
+        <h2>Research Experience</h2>
+        <p>Welcome! Detail your research projects, collaborations, and contributions to the academic field.</p>
+    </section>
+
+    <section id="contact" class="tab-content">
+        <h2>Contact</h2>
+        <p>Welcome! Provide your contact details or a form for visitors to reach you.</p>
+    </section>
+
+    <section id="honors" class="tab-content">
+        <h2>Honors</h2>
+        <p>Welcome! List honors, awards, and other forms of recognition you’ve received.</p>
+    </section>
+
+    <section id="other-experience" class="tab-content">
+        <h2>Other Experience</h2>
+        <p>Welcome! Include additional experiences or volunteer work relevant to your profile.</p>
+    </section>
+
+    <section id="courses" class="tab-content">
+        <h2>Courses</h2>
+        <p>Welcome! List relevant courses you have completed that enhance your skills and qualifications.</p>
+    </section>
+
+    <section id="other" class="tab-content">
+        <h2>Other</h2>
+        <p>Welcome! Any additional information that does not fit into other categories.</p>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Your Name - All Rights Reserved</p>
+</footer>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const tabLinks = document.querySelectorAll('#tab-links a');
+    // JavaScript to handle tab functionality
+    document.addEventListener("DOMContentLoaded", function() {
+        const tabLinks = document.querySelectorAll('.tab-link');
         const tabContents = document.querySelectorAll('.tab-content');
-        const toggleButton = document.getElementById('toggle-button');
-        const sidebar = document.getElementById('sidebar');
 
-        // Tab switching functionality
         tabLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -193,18 +235,6 @@
                 // Show the corresponding content
                 document.getElementById(target).classList.add('active');
             });
-        });
-
-        // Toggle sidebar functionality
-        toggleButton.addEventListener('click', function() {
-            sidebar.classList.toggle('collapsed');
-
-            // Adjust the content margin if sidebar is collapsed
-            if (sidebar.classList.contains('collapsed')) {
-                document.getElementById('content').style.marginLeft = '0';
-            } else {
-                document.getElementById('content').style.marginLeft = '250px'; // Reset margin to full width of sidebar
-            }
         });
     });
 </script>
