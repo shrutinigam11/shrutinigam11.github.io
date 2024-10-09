@@ -5,50 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Webpage</title>
     <style>
-        /* Basic styling for the navigation bar */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+        /* General page styling */
+        * {
+            box-sizing: border-box;
         }
 
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+
+        /* Styling for the navigation bar */
         header {
-            background-color: #333;
+            background-color: #007BFF;
+            color: white;
             padding: 10px 0;
-            text-align: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 4px 2px -2px gray;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: center;
         }
 
         header nav a {
             color: white;
             text-decoration: none;
-            margin: 0 15px;
+            padding: 15px 20px;
+            margin: 0 10px;
             font-weight: bold;
+            transition: background-color 0.3s ease;
         }
 
         header nav a:hover {
-            text-decoration: underline;
+            background-color: #0056b3;
+            border-radius: 5px;
         }
 
-        /* Section styling */
+        /* Styling for sections */
         section {
-            padding: 50px;
-            margin: 50px auto;
             max-width: 1000px;
-            border-bottom: 1px solid #ddd;
+            margin: 60px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         section h2 {
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 10px;
             margin-bottom: 20px;
+            font-size: 28px;
+            color: #007BFF;
         }
 
+        section p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        /* Footer styling */
         footer {
             text-align: center;
             padding: 20px;
-            background-color: #333;
+            background-color: #007BFF;
             color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            margin-top: 60px;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            header nav a {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            section {
+                padding: 20px;
+                margin: 40px auto;
+            }
+
+            section h2 {
+                font-size: 24px;
+            }
+
+            section p {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -76,77 +130,77 @@
 <main>
     <section id="about">
         <h2>About</h2>
-        <p>Information about yourself goes here.</p>
+        <p>This is where you provide information about yourself, including your background, interests, and goals.</p>
     </section>
 
     <section id="projects">
         <h2>Projects</h2>
-        <p>Details of your projects go here.</p>
+        <p>Details of the projects you have worked on. You can mention the technology stack, your role, and key contributions.</p>
     </section>
 
     <section id="publications">
         <h2>Publications</h2>
-        <p>List of your publications goes here.</p>
+        <p>A list of your publications. You can include links, descriptions, and any relevant information.</p>
     </section>
 
     <section id="blogs">
         <h2>Blogs</h2>
-        <p>Your blog entries can go here.</p>
+        <p>Highlight your blog posts and other articles. Describe topics you’ve written about and where they’re published.</p>
     </section>
 
     <section id="cv">
         <h2>CV</h2>
-        <p>Your curriculum vitae can go here.</p>
+        <p>Your detailed Curriculum Vitae can go here. You can also include a downloadable link.</p>
     </section>
 
     <section id="resume">
         <h2>Resume</h2>
-        <p>Your resume details go here.</p>
+        <p>Provide a summary of your professional experience, skills, and key qualifications.</p>
     </section>
 
     <section id="education">
         <h2>Education</h2>
-        <p>List your educational background here.</p>
+        <p>List your educational background, including institutions, degrees earned, and relevant coursework.</p>
     </section>
 
     <section id="work">
         <h2>Work Experience</h2>
-        <p>Details of your work experience go here.</p>
+        <p>Describe your professional work history, key roles, and major accomplishments.</p>
     </section>
 
     <section id="research">
         <h2>Research Experience</h2>
-        <p>Information about your research experience goes here.</p>
+        <p>Detail your research projects, collaborations, and contributions to the academic field.</p>
     </section>
 
     <section id="contact">
         <h2>Contact</h2>
-        <p>Your contact information goes here.</p>
+        <p>Provide your contact details or a form for visitors to reach you.</p>
     </section>
 
     <section id="honors">
         <h2>Honors</h2>
-        <p>List your honors and awards here.</p>
+        <p>List honors, awards, and other forms of recognition you’ve received.</p>
     </section>
 
     <section id="other-experience">
         <h2>Other Experience</h2>
-        <p>Additional experiences can be described here.</p>
+        <p>Include additional experiences or volunteer work relevant to your profile.</p>
     </section>
 
     <section id="courses">
         <h2>Courses</h2>
-        <p>List of relevant courses taken goes here.</p>
+        <p>List relevant courses you have completed that enhance your skills and qualifications.</p>
     </section>
 
     <section id="other">
         <h2>Other</h2>
-        <p>Any other information you'd like to include can go here.</p>
+        <p>Any additional information that does not fit into other categories.</p>
     </section>
 </main>
 
 <footer>
-    <p>&copy; 2024 Your Name</p>
+    <p>&copy; 2024 Your Name - All Rights Reserved</p>
 </footer>
 
 </body>
