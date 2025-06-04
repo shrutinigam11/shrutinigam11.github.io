@@ -428,29 +428,40 @@
     </section>
 </main>
 <script>
-    // JavaScript to handle tab functionality
-    document.addEventListener("DOMContentLoaded", function() {
-        const tabLinks = document.querySelectorAll('.tab-link');
-        const tabContents = document.querySelectorAll('.tab-content');
+document.addEventListener("DOMContentLoaded", function () {
+    const tabLinks = document.querySelectorAll('.tab-link');
+    const tabContents = document.querySelectorAll('.tab-content');
 
-        tabLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = this.getAttribute('data-tab');
+    function showTab(tabId) {
+        // Remove active classes
+        tabLinks.forEach(link => link.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
 
-                // Remove active class from all links
-                tabLinks.forEach(link => link.classList.remove('active'));
-                // Hide all tab contents
-                tabContents.forEach(content => content.classList.remove('active'));
+        // Activate the current tab and content
+        const activeLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
+        const activeContent = document.getElementById(tabId);
 
-                // Add active class to the clicked link
-                this.classList.add('active');
-                // Show the corresponding content
-                document.getElementById(target).classList.add('active');
-            });
+        if (activeLink && activeContent) {
+            activeLink.classList.add('active');
+            activeContent.classList.add('active');
+        }
+    }
+
+    // Event listener for clicking sidebar links
+    tabLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const tabId = this.getAttribute('data-tab');
+            window.location.hash = tabId; // Set hash in URL
+            showTab(tabId);
         });
-
     });
+
+    // On page load, check hash
+    const initialTab = window.location.hash ? window.location.hash.substring(1) : 'about';
+    showTab(initialTab);
+});
 </script>
+
 </body>
 </html>
