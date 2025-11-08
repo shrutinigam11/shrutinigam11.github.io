@@ -8,3 +8,38 @@ footer {
     margin-top: auto; /* Push footer to the bottom */
     font-size: 14px; /* Adjust font size */
 }
+
+/* 🌙 DARK MODE STYLES */
+body.dark-mode {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+}
+
+body.dark-mode .tab-content {
+    background-color: #2a2a2a;
+    color: #f1f1f1;
+}
+
+body.dark-mode .sidebar {
+    background-color: #333;
+}
+
+body.dark-mode .sidebar a {
+    color: #f1f1f1;
+}
+
+body.dark-mode .sidebar a.active,
+body.dark-mode .sidebar a:hover {
+    background-color: #007BFF;
+    color: white;
+}
+
+body.dark-mode footer {
+    background-color: #333;
+    color: #ddd;
+}
+
+body.dark-mode h2 {
+    color: #00BFFF;
+    border-color: #00BFFF;
+}
