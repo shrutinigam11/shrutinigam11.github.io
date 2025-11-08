@@ -474,22 +474,37 @@ document.addEventListener("DOMContentLoaded", function () {
     const tabContents = document.querySelectorAll('.tab-content');
 
     function showTab(tabId) {
-    // Remove active classes
-    tabLinks.forEach(link => link.classList.remove('active'));
-    tabContents.forEach(content => content.classList.remove('active'));
+        // Remove active classes
+        tabLinks.forEach(link => link.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
 
-    // Activate the current tab and content
-    const activeLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
-    const activeContent = document.getElementById(tabId);
+        // Activate the current tab and content
+        const activeLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
+        const activeContent = document.getElementById(tabId);
 
-    if (activeLink && activeContent) {
-        activeLink.classList.add('active');
-        activeContent.classList.add('active');
-
-        // ✅ Smooth scroll to top of the active content
-        activeContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (activeLink && activeContent) {
+            activeLink.classList.add('active');
+            activeContent.classList.add('active');
+        }
     }
-}
+
+    // function showTab(tabId) {
+    // // Remove active classes
+    // tabLinks.forEach(link => link.classList.remove('active'));
+    // tabContents.forEach(content => content.classList.remove('active'));
+
+    // // Activate the current tab and content
+    // const activeLink = document.querySelector(`.tab-link[data-tab="${tabId}"]`);
+    // const activeContent = document.getElementById(tabId);
+
+    // if (activeLink && activeContent) {
+    //     activeLink.classList.add('active');
+    //     activeContent.classList.add('active');
+
+    //     // ✅ Smooth scroll to top of the active content
+    //     activeContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // }
+    // }
 
 
     // Event listener for clicking sidebar links
