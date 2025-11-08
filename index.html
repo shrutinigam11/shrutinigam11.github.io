@@ -117,9 +117,61 @@
                 font-size: 16px;
             }
         }
+        /* 🌙 DARK MODE STYLES */
+        
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        .sidebar.dark-mode {
+            background-color: #1e1e1e;
+        }
+        
+        .sidebar.dark-mode a {
+            color: #e0e0e0;
+        }
+        
+        .sidebar.dark-mode a.active,
+        .sidebar.dark-mode a:hover {
+            background-color: #333;
+        }
+        
+        .tab-content.dark-mode {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1);
+        }
+        
+        footer.dark-mode {
+            background-color: #1e1e1e;
+            color: #bbb;
+        }
+        button#theme-toggle.dark {
+            background-color: #444;
+            color: #fff;
+        }
+
     </style>
 </head>
 <body>
+
+<button id="theme-toggle" style="
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 14px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: background-color 0.3s ease;
+">🌙 Dark Mode</button>
+
 <div class="sidebar">
     <a href="#about" class="tab-link active" data-tab="about">About</a>
     <a href="#education" class="tab-link" data-tab="education">Education</a>
@@ -398,8 +450,7 @@
         <div style="text-align: center; margin-top: 20px;">
             <h3>Certificate</h3>
             <!-- Embed the certificate image -->
-            <img src="https://raw.githubusercontent.com/shrutinigam11/shrutinigam11.github.io/main/assets/Shruti-Nigam-IISc-QuRP.jpg
-            " alt="Q-Karyashala 2024 Certificate" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <img src="https://raw.githubusercontent.com/shrutinigam11/shrutinigam11.github.io/main/assets/Shruti-Nigam-IISc-QuRP.jpg" alt="Q-Karyashala 2024 Certificate" style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
         </div>
     </section>
 
@@ -476,6 +527,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const tabLinks = document.querySelectorAll('.tab-link');
     const tabContents = document.querySelectorAll('.tab-content');
+    const themeToggle = document.getElementById('theme-toggle');
 
     function showTab(tabId) {
         // Remove active classes
@@ -493,8 +545,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-
-
     // Event listener for clicking sidebar links
     tabLinks.forEach(link => {
         link.addEventListener('click', function (e) {
@@ -508,7 +558,29 @@ document.addEventListener("DOMContentLoaded", function () {
     // On page load, check hash
     const initialTab = window.location.hash ? window.location.hash.substring(1) : 'about';
     showTab(initialTab);
+
+    // 🌗 Dark Mode Load Preference
+    if (localStorage.getItem('theme') === 'dark') {
+        body.classList.add('dark-mode');
+        document.querySelector('.sidebar').classList.add('dark-mode');
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.add('dark-mode'));
+        document.querySelector('footer').classList.add('dark-mode');
+        themeToggle.textContent = '☀️ Light Mode';
+    }
+    
+    // 🌙 Toggle
+    themeToggle.addEventListener('click', () => {
+        const isDark = body.classList.toggle('dark-mode');
+        document.querySelector('.sidebar').classList.toggle('dark-mode');
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.toggle('dark-mode'));
+        document.querySelector('footer').classList.toggle('dark-mode');
+        themeToggle.textContent = isDark ? '☀️ Light Mode' : '🌙 Dark Mode';
+        themeToggle.classList.toggle('dark', isDark);
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
 });
+
+
 </script>
 
 </body>
