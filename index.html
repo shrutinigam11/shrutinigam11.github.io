@@ -109,15 +109,24 @@
                 width: 100%;
                 height: auto;
                 display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                justify-content: flex-start;
                 padding: 10px;
-                gap: 5px;
+                gap: 8px;
+                scrollbar-width: none;
+            }
+            
+            .sidebar::-webkit-scrollbar {
+                display: none;
             }
             .sidebar a {
-                margin: 5px;
-                padding: 8px 12px;
+                white-space: nowrap;
+                margin: 0;
+                padding: 8px 14px;
                 font-size: 14px;
+                flex-shrink: 0;
+                border-radius: 20px;
             }
             
             main {
@@ -164,6 +173,10 @@
         button#theme-toggle.dark {
             background: linear-gradient(135deg, #1e3a8a, #2563eb);
             color: #fff;
+        }
+        body.dark-mode .tab-content h2 {
+            color: #93c5fd;
+            border-bottom: 2px solid #60a5fa;
         }
 
     </style>
