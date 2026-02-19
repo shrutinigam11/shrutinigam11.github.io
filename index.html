@@ -21,6 +21,10 @@
             min-height: 100vh; /* Minimum height to allow footer at the bottom */
             flex-direction: column; /* Vertical layout */
         }
+        /* Smooth theme transition */
+        body, .sidebar, .tab-content, footer {
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
 
 
         /* Styling for the sidebar */
@@ -94,39 +98,46 @@
             margin-top: auto; /* Push footer to the bottom */
             font-size: 14px; /* Adjust font size */
         }
-
-        /* Media queries for responsiveness */
+        
         @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            
             .sidebar {
-                width: 200px; /* Adjust sidebar width */
+                position: relative;
+                width: 100%;
+                height: auto;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                padding: 10px;
             }
-
+            .sidebar a {
+                margin: 5px;
+                padding: 8px 12px;
+                font-size: 14px;
+            }
+            
             main {
-                margin-left: 220px; /* Adjust margin for main content */
+                margin-left: 0;
+                padding: 10px;
             }
-
+            
             .tab-content {
+                margin: 20px auto;
                 padding: 20px;
-                margin: 40px auto;
-            }
-
-            .tab-content h2 {
-                font-size: 24px;
-            }
-
-            .tab-content p {
-                font-size: 16px;
             }
         }
         /* 🌙 DARK MODE STYLES */
         
         body.dark-mode {
-            background-color: #121212;
-            color: #e0e0e0;
+            background-color: #0f172a;
+            color: #e2e8f0;
         }
         
         .sidebar.dark-mode {
-            background-color: #1e1e1e;
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
         }
         
         .sidebar.dark-mode a {
