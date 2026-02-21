@@ -130,9 +130,40 @@
     font-size: 18px;
     color: white;
 }
+.sidebar-toggle {
+    width: 100%;
+    background: rgba(255,255,255,0.15);
+    border: none;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    transition: background 0.3s ease;
+}
+
+.sidebar-toggle:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+/* Center icon when collapsed */
+.sidebar.collapsed .sidebar-toggle {
+    padding: 12px 5px;
+}
         
         @media (max-width: 768px) {
-            
+            @media (max-width: 768px) {
+    .sidebar-toggle {
+        position: absolute;
+        top: 15px;
+        right: -60px;
+        width: 45px;
+        border-radius: 8px;
+        background-color: #007BFF;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+}
             #menu-toggle {
                 display: block;
             }
@@ -248,7 +279,10 @@
     transition: background-color 0.3s ease;
 ">🌙 Dark Mode</button>
 
-<button id="menu-toggle" style="
+
+
+<div class="sidebar"> 
+    <button id="menu-toggle" style="
     position: fixed;
     top: 15px;
     left: 20px;
@@ -262,8 +296,6 @@
     
     z-index: 1001;
 ">☰</button>
-
-<div class="sidebar">                                                                                                             
     <a href="#about" class="tab-link active" data-tab="about">About</a>
     <a href="#education" class="tab-link" data-tab="education">Education</a>
     <a href="#work" class="tab-link" data-tab="work">Work Experience</a>
