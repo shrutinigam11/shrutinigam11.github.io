@@ -54,10 +54,15 @@
 
         /* Styling for the main content area */
         main {
-            margin-left: 270px; /* Offset for the sidebar */
-            padding: 20px;
-            flex: 1; /* Allow main to fill available space */
-        }
+    margin-left: 270px;
+    padding: 20px;
+    flex: 1;
+    transition: margin-left 0.3s ease;
+}
+
+.sidebar.collapsed ~ main {
+    margin-left: 90px;
+}
 
         /* Styling for tab content */
         .tab-content {
@@ -98,6 +103,33 @@
             margin-top: auto; /* Push footer to the bottom */
             font-size: 14px; /* Adjust font size */
         }
+
+        /* Desktop collapsible sidebar */
+.sidebar {
+    width: 250px;
+    background-color: #007BFF;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    overflow-y: auto;
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.sidebar.collapsed {
+    width: 70px;
+}
+
+.sidebar.collapsed a {
+    text-align: center;
+    padding: 15px 5px;
+    font-size: 0;
+}
+
+.sidebar.collapsed a::before {
+    content: "•";
+    font-size: 18px;
+    color: white;
+}
         
         @media (max-width: 768px) {
             
@@ -128,7 +160,7 @@
             }
             
             main {
-                margin-left: 0;
+                margin-left: 0 !important;
                 padding: 15px;
             }
             
@@ -144,8 +176,8 @@
             .tab-content li {
                 font-size: 15px;
             }
-            .sidebar.open + main {
-                margin-left: 250px;
+            main {
+                margin-left: 0 !important;
             }
 
 
@@ -636,8 +668,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Mobile menu toggle
     menuToggle.addEventListener('click', () => {
+    if (window.innerWidth <= 768) {
+        // Mobile → overlay
         sidebar.classList.toggle('open');
-    });
+    } else {
+        // Desktop → collapse
+        sidebar.classList.toggle('collapsed');
+    }
+});
 
     // Load correct tab from URL
     const initialTab = window.location.hash ? window.location.hash.substring(1) : 'about';
