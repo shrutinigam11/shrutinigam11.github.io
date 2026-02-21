@@ -126,24 +126,31 @@ footer {
         left: -260px;
         width: 250px;
         z-index: 1000;
+        transition: left 0.3s ease;
     }
 
-    .sidebar.open { left: 0; }
+    .sidebar.open {
+        left: 0;
+    }
 
     main {
         margin-left: 0 !important;
         padding: 15px;
     }
 
+    /* FIX: make toggle button fixed on mobile */
     .sidebar-toggle {
-        position: absolute;
+        position: fixed;
         top: 15px;
-        right: -60px;
+        left: 15px;
         width: 45px;
+        height: 40px;
         border-radius: 8px;
         background-color: #007BFF;
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 1101;
     }
+
 }
 
 /* ================= DARK MODE ================= */
