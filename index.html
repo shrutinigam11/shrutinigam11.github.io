@@ -80,6 +80,7 @@ main {
     padding: 20px;
     flex: 1;
     transition: margin-left 0.3s ease;
+    position: relative;
 }
 
 .sidebar.collapsed ~ main {
@@ -89,22 +90,29 @@ main {
 /* ================= CONTENT ================= */
 
 .tab-content {
-    display: none;
     max-width: 1000px;
     margin: 60px auto;
     padding: 30px;
     background: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+    opacity: 0;
+    transform: translateY(10px);
+    visibility: hidden;
+    position: absolute;
+    width: calc(100% - 40px);
+
+    transition:
+        opacity 0.4s ease,
+        transform 0.4s ease;
 }
 
-.tab-content.active { display: block; }
-
-.tab-content h2 {
-    border-bottom: 2px solid #007BFF;
-    padding-bottom: 10px;
-    margin-bottom: 20px;
-    color: #007BFF;
+.tab-content.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    position: relative;
 }
 
 /* ================= FOOTER ================= */
